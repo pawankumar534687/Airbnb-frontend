@@ -24,7 +24,7 @@ const CreatePost = () => {
       formData.append("country", data.country);
       formData.append("image", data.image[0]); 
   
-      const response = await axios.post("http://localhost:8000/api/create-post-form", formData, {
+      const response = await axios.post("https://airbnb-backend-e9ka.onrender.com/api/create-post-form", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
