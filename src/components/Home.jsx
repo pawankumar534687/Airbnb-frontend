@@ -13,7 +13,7 @@ const Home = () => {
         console.error("No token found");
         return;
       }
-      const response = await axios.get("http://localhost:8000/api/show", {
+      const response = await axios.get("https://airbnb-backend-e9ka.onrender.com/api/show", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
