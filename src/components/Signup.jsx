@@ -23,7 +23,7 @@ const Signup = () => {
 
   const onSubmit = async (data) => {
     try {
-     const response = await axios.post("http://localhost:8000/api/signup", data);
+     const response = await axios.post("https://airbnb-backend-e9ka.onrender.com/api/signup", data);
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       toast.success(" registered succsesfully");
