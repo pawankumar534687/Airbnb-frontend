@@ -1,16 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const Logout = () => {
    const navigate = useNavigate();
+   const [token, setToken] = useState(localStorage.getItem("token"));
+     useEffect(() => {
+    setToken(localStorage.getItem("token"));
+  }, []);
     const handleRemove = ()=>{
         toast.success("Logout succsesfully")
         localStorage.removeItem("token")
+       setToken(null); 
         navigate("/login");
     }
 
-    const token = localStorage.getItem("token")
+   
   return (
     <div >
       {token && (
