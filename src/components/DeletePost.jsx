@@ -9,7 +9,7 @@ const DeletePost = () => {
     const deletePost = async () => {
         try {
             const token = localStorage.getItem("token")
-             axios.delete(`http://localhost:8000/api/post/${id}`, {
+             axios.delete(`https://airbnb-backend-e9ka.onrender.com/api/post/${id}`, {
                 headers:{
                     Authorization: `Bearere ${token}`
                 }
