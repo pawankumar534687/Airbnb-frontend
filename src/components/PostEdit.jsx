@@ -35,7 +35,7 @@ const PostEdit = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:8000/api/detailedpost/${id}`,
+          `https://airbnb-backend-e9ka.onrender.com/api/detailedpost/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const PostEdit = () => {
   const onSubmit = async (data) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:8000/api/edit/${id}`, data, {
+      await axios.put(`https://airbnb-backend-e9ka.onrender.com/api/edit/${id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
