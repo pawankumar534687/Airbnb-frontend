@@ -1,0 +1,82 @@
+import axios from "axios";
+import React,{useEffect} from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { isAuthenticated } from "../App";
+import { Link } from "react-router-dom";
+const Signup = () => {
+  const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate("/"); 
+    }
+  }, []);
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+     const response = await axios.post("http://localhost:8000/api/signup", data);
+      const { token, user } = response.data;
+      localStorage.setItem("token", token);
+      toast.success(" registered succsesfully");
+      reset();
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error(error.response?.data?.error || "Failed to submit");
+    }
+  };
+
+  return (
+    <div  className='login-form'>
+      <h1 className='login-form-heading'>Signup form</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="identifier">Email or Phone</label>
+          <br />
+          <input className='login-form-input' 
+            type="text"
+            id="identifier"
+            placeholder="Enter email or phone"
+            {...register("identifier", { required: "identifier is required" })}
+          />
+          {errors.identifier && <p style={{ color: "red" }}>{errors.identifier.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="username">Username</label>
+          <br />
+          <input className='login-form-input'
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            {...register("username", { required: "username is required" })}
+          />
+          {errors.username && <p style={{ color: "red" }}>{errors.username.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <br />
+          <input className='login-form-input'
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            {...register("password", { required: "password is required" })}
+          />
+          {errors.password && <p style={{ color: "red" }}>{errors.password.message}</p>}
+        </div>
+        <button className="custom-danger-btn"  type="submit">submit</button>
+        <Link to="/login" className="Link-blue">Login page</Link>
+      </form>
+    </div>
+  );
+};
+
+export default Signup;
