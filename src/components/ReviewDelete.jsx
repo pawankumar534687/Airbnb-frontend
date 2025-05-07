@@ -9,7 +9,7 @@ const ReviewDelete = ({id}) => {
     const deletereview = async()=>{
         try {
           const token = localStorage.getItem("token")
-             axios.delete(`http://localhost:8000/api/review/${id}`, {
+             axios.delete(`https://airbnb-backend-e9ka.onrender.com/api/review/${id}`, {
               headers:{
                 Authorization: `Bearer ${token}`
               }
