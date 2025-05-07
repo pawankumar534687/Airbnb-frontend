@@ -14,7 +14,7 @@ const DetailedPost = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        `http://localhost:8000/api/detailedpost/${id}`, {
+        `https://airbnb-backend-e9ka.onrender.com/api/detailedpost/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
