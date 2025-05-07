@@ -25,7 +25,7 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/login",
+        "https://airbnb-backend-e9ka.onrender.com/api/login",
         data
       );
       const { token, user } = response.data;
