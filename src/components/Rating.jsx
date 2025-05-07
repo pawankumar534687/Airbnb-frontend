@@ -13,7 +13,7 @@ function Rating({ postId }) {
     console.log("postId: ", postId);
     try {
       const token = localStorage.getItem("token")
-      await axios.post("http://localhost:8000/api/review", {
+      await axios.post("https://airbnb-backend-e9ka.onrender.com/api/review", {
         rating,
         comment,
         postId,
