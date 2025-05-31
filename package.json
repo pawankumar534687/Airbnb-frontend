@@ -7,7 +7,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "vite build && cpx render.json dist"
+   "build": "vite build && cpx render.json dist"
+
   },
   "dependencies": {
     "axios": "^1.9.0",
