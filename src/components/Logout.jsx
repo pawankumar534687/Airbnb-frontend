@@ -1,29 +1,32 @@
-import React, {useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Logout = () => {
-   const navigate = useNavigate();
-   const [token, setToken] = useState(localStorage.getItem("token"));
-     useEffect(() => {
+  const navigate = useNavigate();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  useEffect(() => {
     setToken(localStorage.getItem("token"));
   }, []);
-    const handleRemove = ()=>{
-        toast.success("Logout succsesfully")
-        localStorage.removeItem("token")
-       setToken(null); 
-        navigate("/login");
-    }
+  const handleRemove = () => {
+    toast.success("Logout succsesfully");
+    localStorage.removeItem("token");
+    setToken(null);
+    navigate("/login");
+  };
 
-   
   return (
-    <div >
+    <div>
       {token && (
- <button onClick={handleRemove} className="custom-danger-btn-class-logout">Logout</button>
+        <button
+          onClick={handleRemove}
+          className="custom-danger-btn-class-logout"
+        >
+          Logout
+        </button>
       )}
-     
     </div>
-  )
-}
+  );
+};
 
-export default Logout
+export default Logout;
