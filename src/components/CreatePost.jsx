@@ -45,7 +45,7 @@ const CreatePost = () => {
 
       navigate("/");
     } catch (error) {
-      console.error("Error submitting form:", error);
+     
       toast.error("Failed to submit");
     }
   };

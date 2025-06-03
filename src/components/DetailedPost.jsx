@@ -12,14 +12,12 @@ const DetailedPost = () => {
 
   const detail = async () => {
     try {
-      const token = localStorage.getItem("token");
+      
       const response = await axios.get(
-        `https://airbnb-backend-e9ka.onrender.com/api/detailedpost/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+        `https://airbnb-backend-e9ka.onrender.com/api/detailedpost/${id}`, 
+         
           
-        }
+        
       );
 
       setPost(response.data);
