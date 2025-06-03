@@ -7,17 +7,10 @@ const Home = () => {
 
   const getPosts = async () => {
     try {
-      const token = localStorage.getItem("token");
-      if (!token) {
+      
+      const response = await axios.get("https://airbnb-backend-e9ka.onrender.com/api/show"
        
-        console.error("No token found");
-        return;
-      }
-      const response = await axios.get("https://airbnb-backend-e9ka.onrender.com/api/show", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      );
      
       setAllPosts(response.data);
 
