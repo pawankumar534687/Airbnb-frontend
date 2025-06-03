@@ -12,12 +12,24 @@ import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Logout from "./components/Logout";
 import TokenDecode from "./components/TokenDecode";
+import { useLocation } from "react-router-dom";
 
 export const isAuthenticated = () => {
   return !!localStorage.getItem("token");
 };
 
+
+const hideRoute = ['/signup', '/login', '/logout']
+
+
+
 function App() {
+
+  const location = useLocation()
+
+  const shouldHideRouter = hideRoute.includes(location.pathname)
+
+
   return (
     <>
       <TokenDecode>
@@ -54,7 +66,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
         </Routes>
 
-        <Footer />
+        { !shouldHideRouter && <Footer />}
       </TokenDecode>
     </>
   );

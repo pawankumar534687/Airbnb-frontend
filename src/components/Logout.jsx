@@ -9,10 +9,12 @@ const Logout = () => {
     setToken(localStorage.getItem("token"));
   }, []);
   const handleRemove = () => {
-    toast.success("Logout succsesfully");
+   
     localStorage.removeItem("token");
     setToken(null);
     navigate("/login");
+    window.location.reload()
+     toast.success("Logout succsesfully");
   };
 
   return (

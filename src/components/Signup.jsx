@@ -26,9 +26,12 @@ const Signup = () => {
      const response = await axios.post("https://airbnb-backend-e9ka.onrender.com/api/signup", data);
       const { token, user } = response.data;
       localStorage.setItem("token", token);
-      toast.success(" registered succsesfully");
+      
       reset();
       navigate("/");
+
+      window.location.reload()
+      toast.success(" registered succsesfully");
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error(error.response?.data?.error || "Failed to submit");

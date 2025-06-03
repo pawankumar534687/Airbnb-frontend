@@ -30,12 +30,14 @@ const Login = () => {
       );
       const { token, user } = response.data;
       localStorage.setItem("token", token);
-      toast.success(" login succsesfully");
+     
       reset({
         identifier: "",
         password: "",
       });
       navigate("/");
+      window.location.reload()
+       toast.success(" login succsesfully");
     } catch (error) {
       console.error("Error submitting form:", error);
       
